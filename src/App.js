@@ -1,6 +1,8 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, set } from "firebase/database";
 
+
+//update your own config
 const firebaseConfig = {
   apiKey: "",
   authDomain: "test-9025f.firebaseapp.com",
