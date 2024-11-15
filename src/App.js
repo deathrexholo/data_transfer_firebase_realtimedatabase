@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { initializeApp } from 'firebase/app';
+import { getDatabase, ref, set } from "firebase/database";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const firebaseConfig = {
+  apiKey: "",
+  authDomain: "test-9025f.firebaseapp.com",
+  projectId: "test-9025f",
+  storageBucket: "test-9025f.firebasestorage.app",
+  messagingSenderId: "1030195647961",
+  appId: "1:1030195647961:web:d2d624e48c88809be835c8",
+  databaseURl: "\/",
+};
+
+// Initialize Firebase
+initializeApp(firebaseConfig);
+
+
+//changes your data 
+
+function writeUserData(userId, name, email, imageUrl) {
+  const db = getDatabase();
+  set(ref(db, 'users/' + userId), {
+    username: 'helll',
+    email: 'ymo278@gmsil',
+    profile_picture: 'shit'
+
+  })
+  .then(() => {
+  console.log('Data written successfully!');
+  })
+  .catch((error) => {
+    console.error('Error writing data:', error);    // to give the successsful message at the console
+  });
 }
 
-export default App;
+export default writeUserData;
